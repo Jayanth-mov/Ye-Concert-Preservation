@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ye Concert Preservation Project | Jayanth.mov</title>
+    <meta
+      name="description"
+      content="A transparent preservation effort for Ye concert footage, with donations used only for hosting and server costs."
+    />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #030303;
+        --text: #f7f1e8;
+        --muted: rgba(247, 241, 232, 0.68);
+        --line: rgba(255, 255, 255, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        color-scheme: dark;
+        background: var(--bg);
+      }
+
+      body {
+        margin: 0;
+        position: relative;
+        min-height: 100svh;
+        overflow-x: hidden;
+        font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(180deg, rgba(3, 3, 3, 0.2), rgba(3, 3, 3, 0.42)),
+          url("../../Ye.png") center 16% / cover no-repeat;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        opacity: 0.08;
+        mix-blend-mode: soft-light;
+        background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+        background-size: 3px 3px;
+      }
+
+      main {
+        position: relative;
+        z-index: 2;
+        width: min(100%, 58rem);
+        margin: 0 auto;
+        padding: clamp(1.25rem, 4vw, 3rem);
+      }
+
+      .scroll-shade {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        min-height: 100%;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(3, 3, 3, 0.02) 0%, rgba(3, 3, 3, 0.28) 38svh, #030303 78svh, #030303 100%);
+      }
+
+      .back-link,
+      .donate-button {
+        min-height: 2.35rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.95rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.92);
+        background: rgba(0, 0, 0, 0.34);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .back-link:hover,
+      .donate-button:hover {
+        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.11);
+      }
+
+      .email-button {
+        display: inline-grid;
+        min-width: 13.8rem;
+        overflow: hidden;
+        place-items: center;
+      }
+
+      .email-button span {
+        grid-area: 1 / 1;
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      .email-button .email-address {
+        opacity: 0;
+        transform: translateY(0.45rem);
+      }
+
+      .email-button:hover .email-label,
+      .email-button:focus-visible .email-label,
+      .email-button.is-revealed .email-label {
+        opacity: 0;
+        transform: translateY(-0.45rem);
+      }
+
+      .email-button:hover .email-address,
+      .email-button:focus-visible .email-address,
+      .email-button.is-revealed .email-address {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      header {
+        min-height: 58svh;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 1rem;
+        text-align: center;
+        transform: translateY(-2rem);
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 18ch;
+        font-size: clamp(2.35rem, 6.4vw, 4.25rem);
+        line-height: 0.95;
+        text-shadow: 0 0.16em 0.65em rgba(0, 0, 0, 0.74);
+      }
+
+      .lede {
+        max-width: 42rem;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: clamp(1rem, 2.1vw, 1.35rem);
+        line-height: 1.45;
+      }
+
+      section {
+        padding: 1.4rem 0;
+        border-top: 1px solid var(--line);
+      }
+
+      h2 {
+        margin-bottom: 0.7rem;
+        font-size: clamp(1.55rem, 3vw, 2.35rem);
+        line-height: 0.94;
+      }
+
+      p {
+        max-width: 46rem;
+        margin: 0 0 0.9rem;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .cost-list {
+        display: grid;
+        gap: 0.5rem;
+        margin: 1rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .cost-list li {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 1rem;
+        padding: 0.72rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .cost-list strong {
+        color: #fff;
+      }
+
+      .donate-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .note {
+        color: rgba(255, 255, 255, 0.54);
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 560px) {
+        body::before {
+          background:
+            linear-gradient(180deg, rgba(3, 3, 3, 0.08), rgba(3, 3, 3, 0.22)),
+            url("../../Ye.png") center top / auto 62svh no-repeat;
+        }
+
+        body::after {
+          opacity: 0.075;
+        }
+
+        .scroll-shade {
+          background: linear-gradient(180deg, rgba(3, 3, 3, 0) 0%, rgba(3, 3, 3, 0.18) 32svh, #030303 62svh, #030303 100%);
+        }
+
+        main {
+          width: 100%;
+          max-width: 100%;
+          padding: 1rem;
+        }
+
+        .back-link,
+        .donate-button {
+          min-height: 2.1rem;
+          padding: 0 0.78rem;
+          font-size: 0.7rem;
+        }
+
+        header {
+          min-height: 46svh;
+          align-content: center;
+          gap: 0.72rem;
+          padding: 0.6rem 0 1.3rem;
+          transform: translateY(-1.55rem);
+        }
+
+        h1 {
+          width: min(100%, 20rem);
+          max-width: none;
+          font-size: clamp(1.35rem, 6.4vw, 1.78rem);
+          line-height: 1.06;
+          overflow-wrap: break-word;
+          text-shadow: 0 0.18em 0.72em rgba(0, 0, 0, 0.86);
+        }
+
+        .lede {
+          width: min(100%, 20rem);
+          max-width: none;
+          color: rgba(255, 255, 255, 0.76);
+          font-size: 0.84rem;
+          line-height: 1.43;
+        }
+
+        section {
+          padding: 1.15rem 0;
+        }
+
+        h2 {
+          font-size: clamp(1.12rem, 5.8vw, 1.42rem);
+          line-height: 1.04;
+          overflow-wrap: break-word;
+        }
+
+        p {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .cost-list li {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 0.2rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        header {
+          transform: translateY(-2rem);
+        }
+      }
+
+      @media (max-width: 560px) and (prefers-reduced-motion: reduce) {
+        header {
+          transform: translateY(-1.55rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-shade" aria-hidden="true"></div>
+    <main>
+      <a class="back-link" href="../">Back to concert</a>
+
+      <header>
+        <h1>Ye Concert Preservation Project</h1>
+        <p class="lede">
+          A public archive project for collecting, organizing, and preserving Ye concert footage so performances do not disappear into dead links, private drives, and takedowns.
+        </p>
+      </header>
+
+      <section>
+        <h2>What This Is</h2>
+        <p>
+          The goal is to consolidate recordings from Ye concerts into one durable, navigable archive: full videos, setlists, timestamps, source credits, and notes on what has been preserved.
+        </p>
+        <p>
+          This page is a placeholder while the archive model is designed. The first public build starts with SoFi Stadium Night 2.
+        </p>
+      </section>
+
+      <section>
+        <h2>Funding Promise</h2>
+        <p>
+          I am committed to documenting this process transparently. I am not taking profit from this project. Any donation money goes toward hosting, storage, bandwidth, and related server costs for preserving the footage.
+        </p>
+        <p>
+          As the archive grows, this page will list monthly infrastructure costs, money received, and what each payment covered.
+        </p>
+      </section>
+
+      <section>
+        <h2>Current Cost Model</h2>
+        <p>
+          The current setup uses Oracle Cloud Object Storage for the video file. Storage is relatively cheap at this scale; the main thing to monitor is outbound video traffic as more concerts and viewers are added.
+        </p>
+        <ul class="cost-list">
+          <li><strong>Current SoFi file</strong><span>About 18 GB stored on Oracle Object Storage</span></li>
+          <li><strong>Storage cost</strong><span>Roughly under $1/month for this one file</span></li>
+          <li><strong>Video delivery</strong><span>Oracle lists the first 10 TB/month outbound from North America as free</span></li>
+          <li><strong>Archive growth</strong><span>Costs scale with total stored footage and traffic</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Support This Project</h2>
+        <p>
+          If you want to help keep the archive online or have footage, ideas, or resources to contribute, reach out directly.
+        </p>
+        <div class="donate-row">
+          <a
+            class="donate-button email-button"
+            href="#support-email"
+            data-email-reveal
+            data-email-user="jayanth.a"
+            data-email-domain="utexas.edu"
+            data-email-subject="Ye Concert Preservation Project"
+          >
+            <span class="email-label">Email me</span>
+            <span class="email-address">jayanth.a [at] utexas.edu</span>
+          </a>
+          <a class="donate-button" href="https://x.com/jayanth_mov" target="_blank" rel="noopener noreferrer">DM on X</a>
+        </div>
+      </section>
+    </main>
+    <script>
+      const emailButton = document.querySelector("[data-email-reveal]");
+
+      if (emailButton) {
+        const emailAddress = `${emailButton.dataset.emailUser}@${emailButton.dataset.emailDomain}`;
+        const emailText = emailButton.querySelector(".email-address");
+        const revealEmail = () => emailButton.classList.add("is-revealed");
+
+        emailButton.href = `mailto:${emailAddress}?subject=${encodeURIComponent(emailButton.dataset.emailSubject)}`;
+        emailButton.setAttribute("aria-label", `Email ${emailAddress}`);
+        if (emailText) emailText.textContent = emailAddress;
+
+        emailButton.addEventListener("pointerdown", revealEmail);
+        emailButton.addEventListener("click", revealEmail);
+      }
+    </script>
+  </body>
+</html>
