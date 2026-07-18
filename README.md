@@ -47,7 +47,14 @@ For a larger archive, the planned direction is adaptive HLS playback backed by o
 
 ## Deploy
 
-The Ye site is currently deployed to Cloudflare Pages. Build the small deployment directory and publish it with Wrangler:
+The Ye site is deployed to the existing `ye-jayanth-mov` Cloudflare Pages project by [GitHub Actions](./.github/workflows/deploy-ye.yml). Every push to `main` assembles the Ye-specific files and publishes them to production automatically.
+
+The repository needs these GitHub Actions secrets:
+
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_API_TOKEN`
+
+The token needs Cloudflare Pages edit access. To deploy the same build manually with Wrangler:
 
 ```bash
 rm -rf .deploy/ye
@@ -59,11 +66,10 @@ npx wrangler@latest pages deploy .deploy/ye \
   --branch main
 ```
 
-Wrangler will prompt for Cloudflare authentication when needed. Never commit API tokens or account credentials.
+Wrangler will prompt for Cloudflare authentication when needed. Never commit API tokens or account credentials; the automated workflow reads them only from encrypted GitHub Actions secrets.
 
 ## Preservation and credits
 
 This is an independent preservation project and is not affiliated with Ye or his team. The current concert compilation combines footage recorded by Jayanth.mov in the pit with credited community recordings and material from the official live concert stream. Full recording credits are available inside the player.
 
 To support or contribute to the preservation effort, use the contact options on the [preservation page](https://ye.jayanth.mov/preservation/).
-

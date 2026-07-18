@@ -1,0 +1,38 @@
+name: Deploy Ye site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ye-jayanth-mov-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy to Cloudflare Pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Assemble Ye site
+        run: |
+          mkdir -p .deploy/ye/preservation
+          cp ye/index.html ye/favicon.svg Ye.png .deploy/ye/
+          cp ye/preservation/index.html .deploy/ye/preservation/
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy .deploy/ye --project-name=ye-jayanth-mov --branch=main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
