@@ -427,6 +427,76 @@
         display: none;
       }
 
+      .student-resources {
+        width: min(var(--max-width), 100%);
+        margin: 1.55rem auto 0;
+        padding: 0 1rem;
+      }
+
+      .student-resources h2 {
+        margin: 0 0 0.7rem;
+        font-family: "Syne", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--text);
+      }
+
+      .student-links {
+        list-style: none;
+        display: grid;
+        gap: 0.7rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      .student-links li {
+        opacity: 0;
+        transform: translateY(10px) scale(0.99);
+        animation: riseIn 600ms ease both;
+      }
+
+      .student-links li:nth-child(1) { animation-delay: 590ms; }
+      .student-links li:nth-child(2) { animation-delay: 650ms; }
+
+      .student-link {
+        min-height: 78px;
+        padding: 0.8rem 0.95rem;
+        color: var(--text);
+        border-color: rgba(255, 255, 255, 0.14);
+        background: linear-gradient(145deg, #20252a 0%, #111417 100%);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.1),
+          0 8px 22px rgba(0, 0, 0, 0.34);
+      }
+
+      .student-link:hover,
+      .student-link:focus-visible {
+        border-color: rgba(255, 255, 255, 0.28);
+        background: linear-gradient(145deg, #2a3036 0%, #171b1f 100%);
+      }
+
+      .student-link .link-main {
+        flex: 1;
+      }
+
+      .student-link .label {
+        white-space: normal;
+        line-height: 1.25;
+      }
+
+      .sheets-icon {
+        width: 2rem;
+        height: 2rem;
+        flex: 0 0 auto;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
+      }
+
+      .student-link .arrow {
+        color: rgba(255, 255, 255, 0.58);
+        flex: 0 0 auto;
+      }
+
       .footnote {
         margin-top: 1.15rem;
         text-align: center;
@@ -472,6 +542,10 @@
 
         .links {
           gap: 0.7rem;
+          padding: 0 0.6rem;
+        }
+
+        .student-resources {
           padding: 0 0.6rem;
         }
 
@@ -583,6 +657,38 @@
           </a>
         </li>
       </ul>
+
+      <section class="student-resources" id="student-resources" aria-labelledby="student-resources-title">
+        <h2 id="student-resources-title">Student Resources</h2>
+        <ul class="student-links">
+          <li>
+            <a class="link student-link" href="https://docs.google.com/spreadsheets/d/1ZFqvc-zcnAZXyzYgr91WYvpO8pfUBpjG" target="_blank" rel="noopener noreferrer">
+              <span class="link-main">
+                <svg class="sheets-icon" viewBox="0 0 32 32" aria-hidden="true">
+                  <path fill="#0F9D58" d="M6 2h13l7 7v19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
+                  <path fill="#87CEAC" d="M19 2v7h7Z" />
+                  <path fill="#fff" d="M9 13h12v11H9Zm2 2v2h3v-2Zm5 0v2h3v-2Zm-5 4v3h3v-3Zm5 0v3h3v-3Z" />
+                </svg>
+                <span class="label">$100,000 Worth of Student Discounts</span>
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="link student-link" href="https://docs.google.com/spreadsheets/d/1MNIbOiVO24cCqLZURZZY54HZ0FT_GhdD2SnBL1sLp50/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <span class="link-main">
+                <svg class="sheets-icon" viewBox="0 0 32 32" aria-hidden="true">
+                  <path fill="#0F9D58" d="M6 2h13l7 7v19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
+                  <path fill="#87CEAC" d="M19 2v7h7Z" />
+                  <path fill="#fff" d="M9 13h12v11H9Zm2 2v2h3v-2Zm5 0v2h3v-2Zm-5 4v3h3v-3Zm5 0v3h3v-3Z" />
+                </svg>
+                <span class="label">Roommate Item Tracker</span>
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </section>
 
       <p class="footnote">© 2026</p>
     </main>
