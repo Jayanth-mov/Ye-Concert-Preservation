@@ -458,6 +458,7 @@
 
       .student-links li:nth-child(1) { animation-delay: 590ms; }
       .student-links li:nth-child(2) { animation-delay: 650ms; }
+      .student-links li:nth-child(3) { animation-delay: 710ms; }
 
       .student-link {
         min-height: 78px;
@@ -485,11 +486,38 @@
         line-height: 1.25;
       }
 
+      .student-link-copy {
+        display: grid;
+        gap: 0.12rem;
+        min-width: 0;
+      }
+
+      .sponsored-label {
+        color: rgba(255, 255, 255, 0.56);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
       .sheets-icon {
         width: 2rem;
         height: 2rem;
         flex: 0 0 auto;
         filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
+      }
+
+      .sylly-icon {
+        width: 2rem;
+        height: 2rem;
+        flex: 0 0 auto;
+        border-radius: 8px;
+        object-fit: contain;
+      }
+
+      .sylly-link .label {
+        font-size: 0.9rem;
+        line-height: 1.18;
       }
 
       .student-link .arrow {
@@ -681,6 +709,18 @@
                   <path fill="#fff" d="M9 13h12v11H9Zm2 2v2h3v-2Zm5 0v2h3v-2Zm-5 4v3h3v-3Zm5 0v3h3v-3Z" />
                 </svg>
                 <span class="label">Roommate Item Tracker</span>
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="link student-link sylly-link" href="https://www.sylly.ai/?utm_source=jayanth&utm_medium=influencer&utm_campaign=sep2026" target="_blank" rel="noopener noreferrer">
+              <span class="link-main">
+                <img class="sylly-icon" src="./sylly-logo.png" alt="Sylly logo" />
+                <span class="student-link-copy">
+                  <span class="label">Sylly - Get better grades, get paid $67</span>
+                  <span class="sponsored-label">Sponsored</span>
+                </span>
               </span>
               <span class="arrow" aria-hidden="true">→</span>
             </a>
