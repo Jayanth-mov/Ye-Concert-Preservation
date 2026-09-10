@@ -487,17 +487,22 @@
       }
 
       .student-link-copy {
+        position: relative;
         display: grid;
         gap: 0.12rem;
         min-width: 0;
       }
 
-      .sponsored-label {
-        color: rgba(255, 255, 255, 0.56);
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
+      .sylly-link .sponsored-label {
+        position: absolute;
+        bottom: calc(100% + 3px);
+        left: 0;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 8px;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1;
+        text-transform: none;
       }
 
       .sheets-icon {
@@ -518,6 +523,10 @@
       .sylly-link .label {
         font-size: 0.9rem;
         line-height: 1.18;
+      }
+
+      .sylly-link {
+        position: relative;
       }
 
       .student-link .arrow {
