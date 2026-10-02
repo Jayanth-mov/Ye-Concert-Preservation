@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 21 52 22" role="img" aria-label="Guppies fish mark">
+  <g fill="#737c86">
+    <path d="M10 32c7-10 18-14 27-10 4 2 7 5 9 10-2 5-5 8-9 10-9 4-20 0-27-10z"/>
+    <path d="M44 32l13-9-4 9 4 9z"/>
+  </g>
+  <circle cx="20" cy="30" r="2.6" fill="#070809"/>
+</svg>
