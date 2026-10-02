@@ -70,7 +70,6 @@
         min-height: clamp(240px, 50vw, 280px);
         width: 100%;
         border-radius: 0;
-        background: #000;
         overflow: hidden;
         animation: reveal 900ms cubic-bezier(0.18, 0.88, 0.21, 1) both;
       }
@@ -601,6 +600,19 @@
       }
 
       @media (min-width: 481px) {
+        .hero::before {
+          content: "";
+          position: absolute;
+          inset: -12px;
+          background-image: image-set(
+            url("./hero-wide-1600.webp") 1x,
+            url("./hero-wide-2172.webp") 2x
+          );
+          background-size: cover;
+          background-position: center 30%;
+          filter: blur(12px);
+        }
+
         .hero img {
           position: relative;
           left: 50%;
@@ -608,7 +620,7 @@
           width: min(310.285714%, 1600px);
           max-width: none;
           transform: translateX(-50%);
-          mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
         }
       }
 
