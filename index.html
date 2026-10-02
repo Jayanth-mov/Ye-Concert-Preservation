@@ -67,7 +67,7 @@
       .hero {
         position: relative;
         height: min(46vh, 430px);
-        min-height: 280px;
+        min-height: clamp(240px, 50vw, 280px);
         width: 100%;
         border-radius: 0;
         overflow: hidden;
@@ -599,7 +599,7 @@
         to { opacity: 1; transform: translateY(0) scale(1); }
       }
 
-      @media (min-width: 700px) {
+      @media (min-width: 481px) {
         .hero::before {
           content: "";
           position: absolute;
@@ -616,7 +616,8 @@
         .hero img {
           position: relative;
           left: 50%;
-          width: clamp(1280px, 100vw, 1600px);
+          /* Match the 700px mobile crop to the 2172px panorama before capping zoom. */
+          width: min(310.285714%, 1600px);
           max-width: none;
           transform: translateX(-50%);
           mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
@@ -625,11 +626,6 @@
 
       @media (max-width: 480px) {
         .shell { padding-bottom: 1.6rem; }
-
-        .hero {
-          min-height: 240px;
-          border-radius: 0;
-        }
 
         .social-links {
           gap: 0.58rem;
@@ -673,9 +669,9 @@
       <section class="hero" aria-label="Profile image">
         <picture>
           <source
-            media="(min-width: 700px)"
+            media="(min-width: 481px)"
             srcset="./hero-wide-1600.webp 1600w, ./hero-wide-2172.webp 2172w"
-            sizes="(min-width: 1600px) 1600px, (min-width: 1280px) 100vw, 1280px"
+            sizes="(min-width: 516px) 1600px, 310.285714vw"
             width="2172"
             height="724"
           />
