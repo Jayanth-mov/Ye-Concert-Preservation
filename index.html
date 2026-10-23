@@ -584,6 +584,18 @@
         margin-right: auto;
       }
 
+      .footnote a {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        color: inherit;
+        text-underline-offset: 3px;
+      }
+
+      .footnote a:hover,
+      .footnote a:focus-visible {
+        color: var(--text);
+      }
+
       @keyframes reveal {
         from { opacity: 0; transform: translateY(-6px) scale(0.99); }
         to { opacity: 1; transform: translateY(0) scale(1); }
@@ -822,7 +834,10 @@
         </ul>
       </section>
 
-      <p class="footnote">© 2026</p>
+      <p class="footnote">
+        <a href="mailto:jayanth.a@utexas.edu" target="_blank" rel="noopener noreferrer">Contact Me</a><br />
+        © 2026
+      </p>
     </main>
     <script>
       document.querySelector(".hero").addEventListener("contextmenu", (event) => {
